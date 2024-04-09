@@ -15,6 +15,9 @@ Built with:
 - Create a free account and get access to PineconeDB
 - And populate your `.env` file with the required information.
 
+## Github Link
+- https://github.com/woruz/langchain
+
 
 ## 🧞 Commands
 

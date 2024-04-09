@@ -16,7 +16,6 @@ type callChainArgs = {
 
 export async function callChain({ question, chatHistory }: callChainArgs) {
   try {
-    // Open AI recommendation
     const sanitizedQuestion = question.trim().replaceAll("\n", " ");
     const pineconeClient = await getPineconeClient();
     const vectorStore = await getVectorStore(pineconeClient);
@@ -38,8 +37,6 @@ export async function callChain({ question, chatHistory }: callChainArgs) {
       }
     );
 
-    // Question using chat-history
-    // Reference https://js.langchain.com/docs/modules/chains/popular/chat_vector_db#externally-managed-memory
     chain
       .call(
         {
@@ -61,7 +58,6 @@ export async function callChain({ question, chatHistory }: callChainArgs) {
         data.close();
       });
 
-    // Return the readable stream
     return new StreamingTextResponse(stream, {}, data);
   } catch (e) {
     console.error(e);
